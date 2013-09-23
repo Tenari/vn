@@ -1,0 +1,15 @@
+<head>
+  <title>Visual Novel Master</title>
+</head>
+
+<body>{{yield}}</body>
+
+<template name="layout">
+  {{#if currentUser}}
+    <a href="/create">Create a VN</a>
+    <a href="/edit">Edit a VN</a>
+    <a href="/watch">Play a VN</a>
+  {{else}}
+    {{loginButtons}}
+  {{/if}}
+</template>
