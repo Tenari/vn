@@ -1,8 +1,10 @@
 <template name="edit">
   <h1>VNs to edit</h1>
   <ul>
-    <li>Story 1</li>
-    <li>Story 2</li>
-    <li>Story 3</li>
+    {{#each vn}}
+      <li>{{title}} by {{format author}}</li>
+    {{else}}
+      There are no VNs. You should <a href="/create">create</a> one.
+    {{/each}}
   </ul>
 </template>
