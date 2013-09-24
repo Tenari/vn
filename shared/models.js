@@ -11,16 +11,20 @@ Chapters = new Meteor.Collection("chapters");
    {
      title: "string",
      scenes: [
+       sceneId, sceneId, sceneId, ...
+     ]
+   }
+*/
+Scenes = new Meteor.Collection("scenes");
+/*
+   {
+     location: "",
+     actions:[ 
        {
-         script:[ //array of actions
-           {
-             speaker: "string",
-             speech: "string",
-             animations: [
-               //data
-             ]
-           },
-           {},{}...
+         speaker: "string",
+         speech: "string",
+         animations: [
+           //data
          ]
        },
        {},{}...

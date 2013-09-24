@@ -13,9 +13,14 @@
       </li>
       {{#if showing this}}
         <ul>
-          <button class="addScene">+</button>
-        {{#each scenes}}
-           <li>Scene info</li>
+          <h4>
+            Scenes:
+            <button class="addScene">+</button>
+          </h4>
+        {{#each scene_objects this}}
+           <li>
+             Location: <input class="scene-location" value="{{location}}" type="text"/>
+           </li>
         {{else}}
           This chapter has no scenes
         {{/each}}
