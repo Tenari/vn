@@ -1,5 +1,6 @@
 Router.configure({
-  layout: 'layout'
+  layout: 'layout',
+  notFoundTemplate: '404'
 });
 Router.map(function(){
   this.route('logged_in_home', {path: '/'});

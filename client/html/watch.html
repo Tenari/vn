@@ -2,8 +2,10 @@
   <h1>VNs to watch</h1>
   search: <input type="text"/><br>
   <ul>
-    <li>Story 1</li>
-    <li>Story 2</li>
-    <li>Story 3</li>
+    {{#each availableVN}}
+      <li><a href="/watch/{{_id}}">{{title}}</a></li>
+    {{else}}
+      There are no available VNs for you. Perhaps you should <a href="/buy">buy</a> one.
+    {{/each}}
   </ul>
 </template>
