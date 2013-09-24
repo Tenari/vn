@@ -1,8 +1,28 @@
-Template.edit.vn = function(){
-  return VNs.find({author: Meteor.userId()});
+Template.edit.showing = function(chapterId){
+  return Session.get('chapter') == chapterId;
 };
-Template.edit.format = function(author){
-  if (author == Meteor.userId())
-    return "me";
-  return Meteor.users.findOne(author).username;
+Template.edit.real_chapter = function(chapterId){
+  return Chapters.findOne(chapterId);
 };
+Template.edit.chapter_title = function(chapterId){
+  return Chapters.findOne(chapterId).title;
+};
+Template.edit.events({
+  'click #addChapter':function(){
+    var chapterId = Chapters.insert({
+      title: "New Chapter",
+      scenes: []
+    });
+    VNs.update(this._id, {
+      $push: {chapters: chapterId}
+    });
+  },
+  'change .chapter-title':function(e){
+    Chapters.update(this.concat(""), {
+      $set: { title: $(e.target).val().trim() }
+    });
+  },
+  'click .showScenes': function(e){
+    Session.set('chapter', this.concat(""));
+  }
+});

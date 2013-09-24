@@ -1,0 +1,10 @@
+<template name="editList">
+  <h1>VNs to edit</h1>
+  <ul>
+    {{#each vn}}
+      <li><a href="/edit/{{_id}}">{{title}}</a> by {{format author}}</li>
+    {{else}}
+      There are no VNs. You should <a href="/create">create</a> one.
+    {{/each}}
+  </ul>
+</template>

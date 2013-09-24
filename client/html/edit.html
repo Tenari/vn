@@ -1,10 +1,28 @@
 <template name="edit">
-  <h1>VNs to edit</h1>
+  <p style="float:right">Edit Mode</p>
+  <h1>{{title}}</h1>
+  <h3>
+    Chapters:
+    <button id="addChapter">+</button>
+  </h3>
   <ul>
-    {{#each vn}}
-      <li>{{title}} by {{format author}}</li>
+    {{#each chapters}}
+      <li>
+        Title: <input class="chapter-title" type="text" value="{{chapter_title this}}"/>
+        <button class="showScenes">Show</button>
+      </li>
+      {{#if showing this}}
+        <ul>
+          <button class="addScene">+</button>
+        {{#each scenes}}
+           <li>Scene info</li>
+        {{else}}
+          This chapter has no scenes
+        {{/each}}
+        </ul>
+      {{/if}}
     {{else}}
-      There are no VNs. You should <a href="/create">create</a> one.
+      This VN has no chapters yet.
     {{/each}}
   </ul>
 </template>

@@ -1,0 +1,4 @@
+@primaryColor: #33E857;
+@complementColor: #33CAE8;
+@secondaryColor: #fff;
+@borderColor: #000;

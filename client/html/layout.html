@@ -10,14 +10,16 @@
     <div style="float:left">
       <a href="/">Home</a>
     </div>
-    {{yield}}
+    <div class="main">
+      {{yield}}
+    </div>
   {{else}}
     {{loginButtons}}
   {{/if}}
 </template>
 
 <template name="logged_in_home">
-  <a href="/create">Create a VN</a>
-  <a href="/edit">Edit a VN</a>
-  <a href="/watch">Play a VN</a>
+  <a href="/create">Create a VN</a><br>
+  <a href="/edit">Edit a VN</a><br>
+  <a href="/watch">Play a VN</a><br>
 </template>

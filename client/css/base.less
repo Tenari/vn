@@ -1,0 +1,15 @@
+@import 'variables.lessimport';
+
+html, body{
+  margin:0;
+  padding:0;
+  height:100%;
+}
+a {
+  color: @complementColor;
+  text-decoration:none;
+  &:hover{
+    text-decoration:underline;
+    color: darken(@complementColor, 5%);
+  }
+}

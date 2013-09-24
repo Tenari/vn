@@ -5,6 +5,7 @@ Template.create.events({
       author: Meteor.userId(),
       chapters: []
     });
-    window.location.pathname = Router.path('edit');
+    // redirect to edit-list
+    Router.go('editList');
   }
 });
