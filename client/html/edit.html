@@ -1,33 +1,64 @@
 <template name="edit">
   <p style="float:right">Edit Mode</p>
   <h1>{{title}}</h1>
-  <h3>
-    Chapters:
-    <button id="addChapter">+</button>
-  </h3>
-  <ul>
-    {{#each chapters}}
-      <li>
-        Title: <input class="chapter-title" type="text" value="{{chapter_title this}}"/>
-        <button class="showScenes">Show</button>
-      </li>
-      {{#if showing this}}
-        <ul>
-          <h4>
-            Scenes:
-            <button class="addScene">+</button>
-          </h4>
-        {{#each scene_objects this}}
-           <li>
-             Location: <input class="scene-location" value="{{location}}" type="text"/>
-           </li>
-        {{else}}
-          This chapter has no scenes
-        {{/each}}
-        </ul>
-      {{/if}}
-    {{else}}
-      This VN has no chapters yet.
-    {{/each}}
-  </ul>
+  {{#if editing}}
+    <button id="saveScene" style="float:right">Save</button>
+    <h3>[Chapter], {{scene_location}}</h3>
+    <div class="scene">
+      <div class="toolbar">
+        <button id="addActionSpeech">+ Add Speech</button>
+        <button id="addActionChoice">+ Add Choice</button>
+        <button id="addActionVisual">+ Add Visual</button>
+      </div>
+      {{#each scene_actions}}
+        <div class="action">
+          {{#if action_type 'speech'}}
+            <strong>{{speaker}}:</strong>
+            <input value="{{speech}}" type="text"/>
+          {{/if}}
+          {{#if action_type 'choice'}}
+            <ul>
+              <li>Your options list is here</li>
+            </ul>
+          {{/if}}
+          {{#if action_type 'visual'}}
+            visual action
+          {{/if}}
+        </div>
+      {{else}}
+        You have no actions. Click the button in the toolbar to add one.
+      {{/each}}
+    </div>
+  {{else}}
+    <h3>
+      Chapters:
+      <button id="addChapter">+</button>
+    </h3>
+    <ul>
+      {{#each chapters}}
+        <li>
+          Title: <input class="chapter-title" type="text" value="{{chapter_title this}}"/>
+          <button class="showScenes">Show</button>
+        </li>
+        {{#if showing this}}
+          <ul>
+            <h4>
+              Scenes:
+              <button class="addScene">+</button>
+            </h4>
+          {{#each scene_objects this}}
+             <li>
+                Location: <input class="scene-location" value="{{location}}" type="text"/>
+                <button class="editScene">Edit</button>
+             </li>
+          {{else}}
+            This chapter has no scenes
+          {{/each}}
+          </ul>
+        {{/if}}
+      {{else}}
+        This VN has no chapters yet.
+      {{/each}}
+    </ul>
+  {{/if}}
 </template>
